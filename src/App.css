@@ -1,0 +1,123 @@
+:root {
+  --delete: #ff3e3e;
+  --deleteHover: #ff2828;
+  --add: #008507;
+  --addHover: #35b53b;
+  --white: #efefef;
+  --black: #000b17;
+  --border: #9a9a9a;
+}
+* {
+  padding: 0;
+  margin: 0;
+  border: none;
+  list-style: none;
+  box-sizing: border-box;
+  border: var(--border);
+}
+body {
+  background: var(--black);
+  color: var(--white);
+}
+
+.container {
+  background: var(--black);
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 50px;
+  margin-bottom: 50px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  background: var(--white);
+  color: var(--black);
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+li:last-child {
+  margin-bottom: 0;
+}
+
+input {
+  width: 85%;
+  padding: 15px 20px;
+  margin: 15px 0;
+  border-radius: 5px;
+  border: 1px solid var(--border);
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+.del {
+  background: var(--delete);
+  color: var(--white);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.del:hover {
+  background: var(--deleteHover);
+}
+
+.add {
+  background: var(--add);
+  color: var(--white);
+  border: none;
+  padding: 15px 25px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0 0 0 5px;
+}
+.add:hover {
+  background: var(--addHover);
+}
+/* Add this to your existing CSS file */
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+
+  h1 {
+    margin-bottom: 30px;
+  }
+
+  input {
+    width: 85%;
+  }
+  .add {
+    margin: 0 0 0 3px;
+  }
+}
+@media (max-width: 993px) {
+  .container {
+    padding: 10px;
+  }
+
+  input {
+    width: 85%;
+  }
+  .add {
+    margin: 0 0 0 10px;
+    padding: 15px 25px;
+  }
+}
