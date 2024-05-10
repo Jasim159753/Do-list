@@ -114,10 +114,10 @@ input {
   }
 
   input {
-    width: 85%;
+    width: 75%;
   }
   .add {
-    margin: 0 0 0 10px;
+    margin: 0 0 0 5px;
     padding: 15px 25px;
   }
 }
