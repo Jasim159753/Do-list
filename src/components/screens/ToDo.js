@@ -9,25 +9,20 @@ class ToDo extends React.Component {
     };
   }
 
-  removeItem = (id) => {
-    let updatedList = this.state.items.filter((item) => item.id !== id);
-    this.setState({ items: updatedList });
-  };
+  componentDidMount() {
+    // Load items from localStorage when the component mounts
+    const savedItems = localStorage.getItem("todoItems");
+    if (savedItems) {
+      this.setState({ items: JSON.parse(savedItems) });
+    }
+  }
 
-  renderItems = () => {
-    return this.state.items.map((item) => (
-      <li key={item.id}>
-        {item.title}{" "}
-        <button
-          className="del"
-          onClick={() => {
-            this.removeItem(item.id);
-          }}
-        >
-          Delete
-        </button>
-      </li>
-    ));
+  removeItem = (id) => {
+    let updatedList = this.state.items.filter((item) => item.id!== id);
+    this.setState({ items: updatedList }, () => {
+      // Save the updated list to localStorage
+      localStorage.setItem("todoItems", JSON.stringify(updatedList));
+    });
   };
 
   updateItem = () => {
@@ -36,10 +31,16 @@ class ToDo extends React.Component {
       title: this.state.input,
     };
     if (this.state.input) {
-      this.setState({
-        items: [...this.state.items, new_item],
-        input: "",
-      });
+      this.setState(
+        (prevState) => ({
+          items: [...prevState.items, new_item],
+          input: "",
+        }),
+        () => {
+          // Save the updated list to localStorage
+          localStorage.setItem("todoItems", JSON.stringify(this.state.items));
+        }
+      );
     }
   };
 
@@ -62,4 +63,5 @@ class ToDo extends React.Component {
     );
   }
 }
+
 export default ToDo;
