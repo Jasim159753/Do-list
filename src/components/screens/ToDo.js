@@ -8,7 +8,21 @@ class ToDo extends React.Component {
       input: "",
     };
   }
-
+  renderItems = () => {
+    return this.state.items.map((item) => (
+      <li key={item.id}>
+        {item.title}{" "}
+        <button
+          className="del"
+          onClick={() => {
+            this.removeItem(item.id);
+          }}
+        >
+          Delete
+        </button>
+      </li>
+    ));
+  };
   componentDidMount() {
     // Load items from localStorage when the component mounts
     const savedItems = localStorage.getItem("todoItems");
@@ -18,7 +32,7 @@ class ToDo extends React.Component {
   }
 
   removeItem = (id) => {
-    let updatedList = this.state.items.filter((item) => item.id!== id);
+    let updatedList = this.state.items.filter((item) => item.id !== id);
     this.setState({ items: updatedList }, () => {
       // Save the updated list to localStorage
       localStorage.setItem("todoItems", JSON.stringify(updatedList));
